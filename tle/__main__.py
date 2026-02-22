@@ -87,6 +87,8 @@ class TLEBot(commands.Bot):
         for extension in cogs:
             await self.load_extension(f'tle.cogs.{extension}')
         logging.info(f'Cogs loaded: {", ".join(self.cogs)}')
+        self.remove_command('ranklist')
+        self.remove_command('meta')
         await cf_common.initialize(self, self.nodb)
         if constants.OAUTH_CONFIGURED:
             from tle.util.oauth import OAuthServer, OAuthStateStore
