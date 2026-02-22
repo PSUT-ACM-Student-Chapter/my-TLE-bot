@@ -32,17 +32,13 @@ class AutoScheduler(commands.Cog):
             print(f"Scheduler: Could not find channel with ID {channel_id}")
             return
         
-        # 1. Send the command text to the channel
         msg = await channel.send(';gudgitters')
         
-        # 2. Force the bot to read that message as a valid command context
         ctx = await self.bot.get_context(msg)
         
-        # 3. Execute the command
         if ctx.valid:
             await self.bot.invoke(ctx)
             
-        # 4. Delete the initial ';gudgitters' text message to keep chat clean
         await msg.delete()
 
     @gudgitters_task.before_loop
