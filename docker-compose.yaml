@@ -11,6 +11,11 @@ services:
     volumes:
       - ./data:/bot/data
 
+    deploy:
+      resources:
+        limits:
+          memory: 1.5G
+
     restart: no
 
     logging:
